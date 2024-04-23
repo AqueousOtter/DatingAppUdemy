@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddCors();
 builder.Services.AddDbContext<DataContext>(opt => 
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -17,7 +18,8 @@ builder.Services.AddDbContext<DataContext>(opt =>
 
 var app = builder.Build();
 
-//Configure the HTTP request pipeline.
+//Configure the HTTP request pipeline. 
+// Order matters
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -26,6 +28,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+app.UseCors( corsBuilder => corsBuilder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
 app.MapControllers();
 
 app.Run();
