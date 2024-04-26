@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component } from '@angular/core';
 import { AccountService } from './_services/account.service';
 import { User } from './_models/user';
@@ -13,20 +13,14 @@ export class AppComponent {
 
   users: any;
 
-  constructor(private http: HttpClient, private accountService: AccountService){}
+  constructor(private accountService: AccountService){}
 
   ngOnInit(): void {
-    this.getUsers();
+    
     this.setCurrentUser(); //sets if we have a user in local storages
   }
 
-  getUsers(){
-    this.http.get('https://localhost:5001/api/users').subscribe({
-      next: response => this.users = response,
-      error: error => console.log(error),
-      complete: () => console.log('Request is finished')
-    })
-  }
+
   setCurrentUser(){
    // const user: User = JSON.parse(localStorage.getItem('user')!); // this way overrides type safety, its okay now but we can be explicit
     const userString = localStorage.getItem('user');
