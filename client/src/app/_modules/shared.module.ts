@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
 
-
+// Module to cut down on the imports for app-modules
 
 @NgModule({
   declarations: [],
