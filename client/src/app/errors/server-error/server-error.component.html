@@ -1,0 +1,15 @@
+<h4>Internal Server Error - refreshing page will clear error</h4>
+<ng-container *ngIf="error">
+    <h5 class="text-danger">Error: {{error.messgae}}</h5>
+    <p class="font-weight-bold">Note: if youare seeing this, angular is not to blame</p>
+    <p>What to do next?</p>
+    <ol>
+        <li>open dev tools! Then check failing request in network tab</li>
+        <li>Examine the request URL what API endpoint are you requesting?</li>
+        <li>Reproduce the problem in Postman - if same error than Angular is not the problem</li>
+    </ol>
+
+    <p class="font-weight-bold">The folling is the stack trace</p>
+    <code class="mt-5" style="background-color: black;">{{error.details}}</code>
+
+</ng-container>

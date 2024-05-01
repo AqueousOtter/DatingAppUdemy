@@ -22,7 +22,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 var app = builder.Build();
 
 
-
+app.UseCors( meCorsBuilder => meCorsBuilder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 //Configure the HTTP request pipeline. 
 app.UseMiddleware<ExceptionMiddleware>();
 
@@ -35,7 +35,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
-app.UseCors( meCorsBuilder => meCorsBuilder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+
 // must be after cors
 app.UseAuthentication();
 app.UseAuthorization();

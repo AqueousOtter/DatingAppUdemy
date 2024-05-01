@@ -1,6 +1,7 @@
 ﻿using API.Controllers;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API;
@@ -14,6 +15,7 @@ public class BuggyController :BaseApiController
         _context = context;
     }
 
+    [Authorize]
     [HttpGet("auth")]
     public ActionResult<string> GetSecret(){
         return "secret text";
@@ -40,7 +42,7 @@ public class BuggyController :BaseApiController
     }
     [HttpGet("bad-request")]
     public ActionResult<string> GetBadRequest(){
-        return BadRequest("Nope, bad");
+        return BadRequest("Nope, bad request");
     }
 
 
