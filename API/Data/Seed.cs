@@ -5,7 +5,7 @@ using API.Data;
 using API.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace API;
+namespace API.Data;
 
 public class Seed
 {

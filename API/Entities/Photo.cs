@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using API.Entities;
 
-namespace API;
+namespace API.Entities;
 
 [Table("Photos")]// lets EF know to make the table this name instead
 public class Photo

@@ -1,4 +1,6 @@
-﻿namespace API.Entities;
+﻿using API.Extensions;
+
+namespace API.Entities;
 
 public class AppUser
 {
