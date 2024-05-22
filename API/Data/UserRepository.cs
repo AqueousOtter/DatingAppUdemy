@@ -1,6 +1,7 @@
 ﻿using API.Data;
 using API.Entities;
 using API.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace API;
 
@@ -12,28 +13,28 @@ public class UserRepository : IUserRepository
     {
         this._context = _context;
     }
-    public Task<AppUser> GetUserByIdAsync(int id)
+    public async Task<AppUser> GetUserByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Users.FindAsync(id);
     }
 
-    public Task<AppUser> GetUserByUsernameAsync(string username)
+    public async Task<AppUser> GetUserByUsernameAsync(string username)
     {
-        throw new NotImplementedException();
+        return await _context.Users.Include( p => p.Photos).SingleOrDefaultAsync(x => x.UserName == username);
     }
 
-    public Task<IEnumerable<AppUser>> GetUsersAsync()
+    public async Task<IEnumerable<AppUser>> GetUsersAsync()
     {
-        throw new NotImplementedException();
+        return await _context.Users.Include( p => p.Photos).ToListAsync(); // eager loading photos by using .Include()
     }
 
-    public Task<bool> SaveAllAsync()
+    public async Task<bool> SaveAllAsync()
     {
-        throw new NotImplementedException();
+        return await _context.SaveChangesAsync() > 0; // bool results
     }
 
     public void Update(AppUser user)
     {
-        throw new NotImplementedException();
+        _context.Entry(user).State = EntityState.Modified;
     }
 }
