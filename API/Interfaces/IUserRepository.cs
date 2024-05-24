@@ -13,6 +13,11 @@ public interface IUserRepository
     Task<AppUser> GetUserByUsernameAsync(string username);
 
 
+    Task<IEnumerable<MemberDTO>> GetMembersAsync();
+
+    Task<MemberDTO>  GetMemberAsync(string username);
+
+
 
 
 }

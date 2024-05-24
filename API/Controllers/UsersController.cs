@@ -35,9 +35,9 @@ public class UsersController : BaseApiController
     [HttpGet("{username}")] // for individual
     public async Task<ActionResult<MemberDTO>> GetUser(string username)
     {
-        var user = await _userRepository.GetUserByUsernameAsync(username);
+        return await _userRepository.GetMemberAsync(username);
 
-        return _mapper.Map<MemberDTO>(user);
+         
     }
 
 }
