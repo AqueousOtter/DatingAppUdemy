@@ -36,7 +36,7 @@ public class AppUser
     public List<Photo> Photos { get; set; } = new List<Photo>();
 
 
-    // public int GetAge(){
+    // public int GetAge(){ removed for automapper
 
     //     return DateOfBirth.CalculateAge();
     // }

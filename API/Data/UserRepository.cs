@@ -30,9 +30,10 @@ public class UserRepository : IUserRepository
         return await _context.Users.Where(x => x.UserName == username).ProjectTo<MemberDTO>(_mapper.ConfigurationProvider).SingleOrDefaultAsync();
     }
 
-    public Task<IEnumerable<MemberDTO>> GetMembersAsync()
+    public async Task<IEnumerable<MemberDTO>> GetMembersAsync()
     {
-        throw new NotImplementedException();
+        
+        return await _context.Users.ProjectTo<MemberDTO>(_mapper.ConfigurationProvider).ToListAsync();
     }
 
     public async Task<AppUser> GetUserByIdAsync(int id)
